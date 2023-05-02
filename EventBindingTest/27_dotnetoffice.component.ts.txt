@@ -1,0 +1,31 @@
+import { Component, OnInit } from "@angular/core";
+import { StudentService } from "../services/student.service";
+
+@Component({
+  selector: "app-dotnetoffice",
+  templateUrl: "./dotnetoffice.component.html",
+  styleUrls: ["./dotnetoffice.component.css"],
+})
+export class DotnetofficeComponent implements OnInit {
+  tital = "AngularUnitTestApp";
+
+  label: string = "Dotnet";
+  constructor(public services: StudentService) {}
+
+  ngOnInit(): void {}
+
+  button1Click() {
+    this.label = "DotNet office";
+  }
+
+  button2Click() {
+    this.label = "label value change on button2";
+  }
+  onChangeInput() {
+    this.label = "onChangeInput label value change";
+  }
+
+  onChangeLabelInput(event: any) {
+    this.label = event.target.value;
+  }
+}

@@ -1,0 +1,73 @@
+import { HttpClientModule } from "@angular/common/http";
+import { DebugElement } from "@angular/core";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { By } from "@angular/platform-browser";
+import { of } from "rxjs";
+import { AppRoutingModule } from "../app-routing.module";
+import { Addition } from "../Calculator";
+import { StudentService } from "../services/student.service";
+
+import { DotnetofficeComponent } from "./dotnetoffice.component";
+
+describe("DotnetofficeComponent", () => {
+  let component: DotnetofficeComponent;
+  let fixture: ComponentFixture<DotnetofficeComponent>;
+  let h1: HTMLElement;
+  let deb: DebugElement;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [DotnetofficeComponent],
+      providers: [StudentService],
+      imports: [AppRoutingModule, HttpClientModule],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(DotnetofficeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    deb = fixture.debugElement;
+
+    h1 = fixture.nativeElement.querySelector("h1");
+  });
+
+  it("button 1", () => {
+    const elemtnt: HTMLButtonElement =
+      fixture.debugElement.nativeElement.querySelector("#button1");
+    expect(component.label).toEqual("Dotnet");
+
+    elemtnt.click();
+    fixture.detectChanges();
+    expect(component.label).toEqual("DotNet office");
+  });
+
+  it("button 2", () => {
+    const elemtnt: HTMLButtonElement =
+      fixture.debugElement.nativeElement.querySelector("#button2");
+    expect(component.label).toEqual("Dotnet");
+
+    elemtnt.click();
+    fixture.detectChanges();
+    expect(component.label).toEqual("label value change on button2");
+  });
+
+  it("textbox 1", () => {
+    const elemtnt: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector("#textbox1");
+    expect(component.label).toEqual("Dotnet");
+
+    elemtnt.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+    expect(component.label).toEqual("onChangeInput label value change");
+  });
+
+  it("textbox 2", () => {
+    const elemtnt: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector("#textbox2");
+    expect(component.label).toEqual("Dotnet");
+
+    elemtnt.value = "Dotnet - updated";
+    elemtnt.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+    expect(component.label).toEqual("Dotnet - updated");
+  });
+});
