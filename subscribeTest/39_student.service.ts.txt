@@ -1,0 +1,29 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PostModel } from '../PostModel';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StudentService {
+
+  jsonUrl = "https://jsonplaceholder.typicode.com/";
+  constructor(
+    protected http: HttpClient
+  ) { }
+
+  SaveDetails(info: { sumVal: number; name: string; }) {
+    return this.http.post('https://localhost:4200', info);
+  }
+
+  public getListOfData()
+  {
+    return this.http.get<PostModel[]>(this.jsonUrl + 'posts');
+  }
+
+  public PostListOfData(post:PostModel)
+  {
+    const headers = new HttpHeaders();
+    return this.http.post(this.jsonUrl + 'posts',post,{headers});
+  }
+}

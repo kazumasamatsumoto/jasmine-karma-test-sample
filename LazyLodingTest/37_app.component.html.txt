@@ -1,0 +1,9 @@
+<div>
+  <a routerLink="/home">home</a> |
+
+  <a routerLink="/about">about</a> |
+
+  <a routerLink="/employeelist">employee list</a> |
+
+  <router-outlet></router-outlet>
+</div>

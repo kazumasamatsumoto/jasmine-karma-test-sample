@@ -1,0 +1,25 @@
+<div *ngFor="let item of ColorNames" class="ngFor1">
+  <div>{{ item }}</div>
+</div>
+
+<p style="color: red">array list for color</p>
+
+<div *ngFor="let item of Colorslist" class="ngFor2">
+  <div>{{ item.name }} - {{ item.id }}</div>
+</div>
+
+<p style="color: red">array list for ngFor properties</p>
+
+<div
+  *ngFor="
+    let item of Colorslist;
+    let i = index;
+    let f = first;
+    let l = last;
+    let e = even;
+    let o = odd
+  "
+  class="ngFor3"
+>
+  <div>{{ i }} - {{ f }} - {{ l }} - {{ e }} - {{ o }}</div>
+</div>

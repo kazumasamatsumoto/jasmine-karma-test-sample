@@ -1,0 +1,23 @@
+<h3>student component - {{title}}</h3>
+
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th> id</th>
+                <th> userId</th>
+                <th> Title</th>
+                <th> Body</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let postList of postData;">
+                <td>{{postList.id}}</td>
+                <td>{{postList.userId}}</td>
+                <td>{{postList.title}}</td>
+                <td>{{postList.body}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
